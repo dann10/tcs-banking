@@ -1,5 +1,19 @@
--- CREACIÓN DE BASE DE DATOS
+/*
+  Script de Base de Datos para Banking TCS
+  Autor: Daniel Arias
+  Fecha: 03/08/2025
+
+*/
+
+-- CREACIÓN DE ESQUEMA DE DATOS
 CREATE DATABASE IF NOT EXISTS BANKING_TCS;
+CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;
+
+ALTER DATABASE BANKING_TCS 
+CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;
+
 USE BANKING_TCS;
 
 -- CREACIÓN DE LAS TABLAS
