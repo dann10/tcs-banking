@@ -1,0 +1,26 @@
+# Gradle
+.gradle/
+build/
+out/
+bin/
+
+# Docker
+**/target/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Logs
+logs/
+*.log
+
+# Archivos generados
+**/build/
+**/.gradle/
+**/.settings/
+**/.classpath
+**/.project
+**/.DS_Store

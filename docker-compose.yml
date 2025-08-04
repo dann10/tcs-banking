@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: banking-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: BANKING_TCS
+      TZ: America/Guayaquil
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/initdb:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - banking-network
+    command: --default-time-zone='-05:00'
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p12345"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  activemq:
+    image: rmohr/activemq:5.15.9
+    container_name: banking-activemq
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+    networks:
+      - banking-network
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: admin
+      ACTIVEMQ_ADMIN_PASSWORD: admin
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8161"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  client-app:
+    image: banking-client-app
+    container_name: banking-client-app
+    ports:
+      - "8080:8080"
+    networks:
+      - banking-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+      activemq:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://banking-mysql:3306/BANKING_TCS?useSSL=false&serverTimezone=America/Guayaquil
+      SPRING_ACTIVEMQ_BROKER_URL: tcp://banking-activemq:61616
+
+  transaction-app:
+    image: banking-transaction-app
+    container_name: banking-transaction-app
+    ports:
+      - "8081:8081"
+    networks:
+      - banking-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+      activemq:
+        condition: service_started
+      client-app:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://banking-mysql:3306/BANKING_TCS?useSSL=false&serverTimezone=America/Guayaquil
+      SPRING_ACTIVEMQ_BROKER_URL: tcp://banking-activemq:61616
+      CLIENT_SERVICE_URL: http://banking-client-app:8080
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  banking-network:
+    driver: bridge

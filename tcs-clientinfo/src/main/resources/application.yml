@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  output.ansi.enabled: "ALWAYS"
+  datasource:
+    url: jdbc:mysql://localhost:3306/BANKING_TCS?useSSL=false&&serverTimezone=America/Guayaquil&allowPublicKeyRetrieval=true
+    username: root
+    password: 12345
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+      hibernate:
+        ddl-auto: update
+        properties:
+          hibernate:
+            jdbc:
+              time_zone: America/Guayaquil
+      show-sql: true
+    jackson:
+      time-zone: America/Guayaquil
+  activemq:
+    host: localhost
+    port: 61616
+    user: admin
+    password: admin
+    broker-url: "tcp://${spring.activemq.host}:${spring.activemq.port}?wireFormat.maxInactivityDuration=30000"
+    packages:
+      trust-all: true
