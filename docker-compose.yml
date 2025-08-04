@@ -52,7 +52,7 @@ services:
       activemq:
         condition: service_started
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://banking-mysql:3306/BANKING_TCS?useSSL=false&serverTimezone=America/Guayaquil
+      SPRING_DATASOURCE_URL: jdbc:mysql://banking-mysql:3306/BANKING_TCS?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Guayaquil
       SPRING_ACTIVEMQ_BROKER_URL: tcp://banking-activemq:61616
 
   transaction-app:
@@ -70,7 +70,7 @@ services:
       client-app:
         condition: service_started
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://banking-mysql:3306/BANKING_TCS?useSSL=false&serverTimezone=America/Guayaquil
+      SPRING_DATASOURCE_URL: jdbc:mysql://banking-mysql:3306/BANKING_TCS?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Guayaquil
       SPRING_ACTIVEMQ_BROKER_URL: tcp://banking-activemq:61616
       CLIENT_SERVICE_URL: http://banking-client-app:8080
 
