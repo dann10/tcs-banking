@@ -52,7 +52,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/clientes?id=1",
+							"raw": "http://localhost:8080/clientes?id=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -64,7 +64,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -101,7 +101,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Daniel Arias\",\r\n    \"gender\": \"MASCULINO\",\r\n    \"age\": 25,\r\n    \"address\": \"Av. Ten\",\r\n    \"phone\": \"+593983011944\",\r\n    \"password\": \"Ten12345*\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Daniel Arias\",\r\n    \"gender\": \"MASCULINO\",\r\n    \"age\": 25,\r\n    \"identification\": \"1719675561\",\r\n    \"address\": \"Av. Ten\",\r\n    \"phone\": \"+593983011949\",\r\n    \"password\": \"Ten12345*\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -132,7 +132,24 @@
 					"name": "DELETE CLIENT",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clientes?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -175,7 +192,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/movimientos?accountId=3&startDate=2025-01-01T00:00:00&endDate=2025-08-03T23:59:59",
+							"raw": "http://localhost:8081/movimientos?accountId=1&startDate=2025-01-01T00:00:00&endDate=2025-08-04T23:59:59",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -187,7 +204,7 @@
 							"query": [
 								{
 									"key": "accountId",
-									"value": "3"
+									"value": "1"
 								},
 								{
 									"key": "startDate",
@@ -195,7 +212,7 @@
 								},
 								{
 									"key": "endDate",
-									"value": "2025-08-03T23:59:59"
+									"value": "2025-08-04T23:59:59"
 								}
 							]
 						}
@@ -217,7 +234,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"clientId\": 6,\r\n  \"accountType\": \"CORRIENTE\",\r\n  \"currentBalance\": null\r\n}",
+							"raw": "{\r\n  \"clientId\": 2,\r\n  \"accountType\": \"AHORROS\",\r\n  \"currentBalance\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -244,7 +261,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/cuentas/saldo?accountNumber=5234919018762",
+							"raw": "http://localhost:8081/cuentas/saldo?accountNumber=6962323823290",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -257,7 +274,7 @@
 							"query": [
 								{
 									"key": "accountNumber",
-									"value": "5234919018762"
+									"value": "6962323823290"
 								}
 							]
 						}
@@ -270,7 +287,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/cuentas?id=1",
+							"raw": "http://localhost:8081/cuentas?id=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -282,7 +299,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -295,7 +312,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/cuentas/cliente?clientId=6",
+							"raw": "http://localhost:8081/cuentas/cliente?clientId=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -308,7 +325,7 @@
 							"query": [
 								{
 									"key": "clientId",
-									"value": "6"
+									"value": "2"
 								}
 							]
 						}
@@ -321,7 +338,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/cuentas?id=1",
+							"raw": "http://localhost:8081/cuentas?id=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -333,7 +350,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -351,7 +368,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/reportes?clientId=3&startDate=2025-01-01&endDate=2025-08-03",
+							"raw": "http://localhost:8081/reportes?clientId=2&startDate=2025-01-01&endDate=2025-08-04",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -363,7 +380,7 @@
 							"query": [
 								{
 									"key": "clientId",
-									"value": "3"
+									"value": "2"
 								},
 								{
 									"key": "startDate",
@@ -371,7 +388,7 @@
 								},
 								{
 									"key": "endDate",
-									"value": "2025-08-03"
+									"value": "2025-08-04"
 								}
 							]
 						}
